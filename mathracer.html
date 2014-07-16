@@ -1,0 +1,62 @@
+<head>
+  <title>Math Racer</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        {{#if gameWon}}
+          <h1>{{winner.name}} won!</h1>
+        {{/if}}
+
+        {{#if gameOn}}
+          <div style="font-size: 125px;">
+            {{question.addend1}} + {{question.addend2}}
+          </div>
+          <form id="answer">
+            <input id="myanswer" type="text">
+          </form>
+        {{else}}
+          <h1>
+            <span class="glyphicon glyphicon-road" style="font-size: 200px;"></span>
+          </h1>
+        {{/if}}
+      </div>
+      <div class="col-xs-6">
+        <h1>Math Racer</h1>
+        <div>
+          {{#if gameOn}}
+            <table>
+              {{#each players}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td><span style="margin-left: {{score}}px" class="glyphicon glyphicon-flag"></span></td>
+                </tr>
+              {{/each}}
+            </table>
+          {{else}}
+            <h3>What's your name?</h3>
+            <form id="joingame">
+              <input id="myname" type="text">
+              <button>Join Game</button>
+            </form>
+
+            <h3>{{count}} other players are in the lobby:</h3>
+            {{#each players}}
+              <div>{{name}}</div>
+            {{/each}}
+
+            <div>
+              <button id="startgame">It's on!</button>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
